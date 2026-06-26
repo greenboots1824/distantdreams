@@ -43,7 +43,7 @@ Ao invés da cena só continuar, ele aponta para outra cena usando `"nextpart"` 
 nextpart = game["start"]["dialogs"][3]["nextpart"]
 
 print(nextpart)
-# Saída: "proxima_parte"
+# "proxima_parte"
 ```
 
 O design de index foi usado justamente pensado para ser lido como uma linha seguida:

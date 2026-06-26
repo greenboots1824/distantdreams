@@ -26,17 +26,17 @@ Como é observado, por padrão, o projeto vem com algumas pastas e arquivos. Dar
 
 ### Python
 
-#### `distantdream.py`
+#### `distantdreams.py`
 
 É somente o "main" do projeto. É por onde o jogo chama os módulos e faz a execução de todo o projeto. Você pode executá-lo usando Python com:
 
 - Windows
 
-`py distantdream.py` ou `python distantdream.py`
+`py distantdreams.py` ou `python distantdreams.py`
 
 - Linux/MacOS
 
-`python distantdream.py` ou `./distantdream.py` (se houver a permissão de executar)
+`python distantdreams.py` ou `./distantdreams.py` (se houver a permissão de executar)
 
 Depois o jogo abre-se normalmente, executando os módulos e fazendo todo o jogo funcionar.
 
@@ -67,13 +67,13 @@ if __name__ == "__main__":
     main()
 ```
 
-Neste caso, ele está chamando o `main(file)` de `engine.py` pra executar a interpretação do conteúdo de `intro.json` em `scenes`. Observe que é um caminho relativo, pois o *rootdir* é simplesmente `distantdream`.
+Neste caso, ele está chamando o `main(file)` de `engine.py` pra executar a interpretação do conteúdo de `intro.json` em `scenes`. Observe que é um caminho relativo, pois o *rootdir* é simplesmente `distantdreams`.
 
 Claro, ninguém irá te impedir de começar por um arquivo de outro nome, além de ser totalmente possível.
 
 O esquema feito é que cada arquivo representa um local. Por exemplo:
 
-Na sua história, tem uma *casa*, nesta casa, uma *cozinha*, *quarto*, *banheiro*, uma *rua* e *praça*. Aí, você faz cada cenário desse em um arquivo para cada:
+Na sua história, tem uma *intro*, *casa*, nesta casa, uma *cozinha*, *quarto*, *banheiro*, uma *rua* e *praça*. Aí, você faz cada cenário desse em um arquivo para cada:
 
 ```
 scenes
@@ -87,9 +87,3 @@ scenes
 ```
 
 Dentro de seus respectivos arquivos, tem seus cenários feitos a mão e desenhados com base na criatividade e nível de detalhes do criador.
-
-#### `intro.json`
-
-Não há nada de tão especial neste arquivo. A questão é que enquanto eu fazia o jogo, eu queria apenas uma introdução do contexto do jogo. Então, fiz este arquivo de introdução.
-
-Você pode começar por outro lugar ou de outro arquivo, mas seguindo minha estrutura da história, eu preciso deste arquivo.

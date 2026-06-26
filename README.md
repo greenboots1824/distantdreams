@@ -1,4 +1,4 @@
-# Distant Dream
+# Distant Dreams
 
 - Autor: GreenBoots  
 - Licença: GNU GPLv3  
@@ -11,32 +11,86 @@
 
 ## Resumo
 
-Escrevendo ainda...
+Status: **Em desenvolvimento** :warning:
+
+(Escrevendo ainda...)
 
 ## Introdução
 
-`distantdream` é um jogo do tipo [CLI](<https://en.wikipedia.org/wiki/Command-line_interface>) de experiência psicológica projetado para ser open-source, *hackável*, portátil (depende somente de funções próprias e embutidas em Python) e multiplataforma, desde que este dispositivo rode Python. Ou seja, você precisa usar a própria imaginação para compreender e, praticamente, *sentir* o jogo ao invés de consumir o conteúdo através de quaisquer algum outro meio como o visual e auditivo em si.
+`distantdream` é um jogo [CLI](<https://en.wikipedia.org/wiki/Command-line_interface>) de experiência psicológica escrito para ser open-source, *hackável* (modificável), portátil e multiplataforma.
 
-Por isto, intencionalmente, o jogo não possui gráficos (2D e nem 3D), músicas, sons e nem nada; somente texto, tal como um livro.  
+O jogo tem uma proposta diferente à ser entregue. Isto é, você precisa usar a própria imaginação para compreender e praticamente *sentir* o jogo ao invés de consumir o conteúdo através de quaisquer outros meios como o visual e auditivo em si.
 
-### Como Funciona?
+Por isto, intencionalmente, o jogo não possui gráficos (2D, 3D), músicas, sons e nem nada; somente texto, tal como um livro.  
+
+## Inspiração
+
+Era um dia normal, mas ao pensar na área de gamedev, eu fiquei meio pensativo sobre um jogo onde você imagina todo o cenário dele na sua cabeça após ter conversado com uma pessoa familiar sobre programação.  
+O jogo te daria um cenário, porém você usa da sua própria imaginação para recriar o jogo na sua cabeça.
+
+Para isto, memórias fragmentadas, sentimentos atuais, uso de imagens simbólicas oníricas serão usados do leitor/jogador para criar e recriar sensações.
+
+Como estava também sem muitos projetos diferenciados e muitas idéias anteriores, então, quis fazer um jogo nesta tem
+
+### Curiosidades:
+- O jogo foi baseado em **Doki Doki Literature Club** e **Yume Nikki**. Falando respectivamente, pois se deve do jogo ser em visual novel, com uma história toda contada em caixas de diálogo; o jogo também apela para um lado mais onírico, como de fato, um sonho.
+- Ao criar o jogo, toda vez que penso sobre o jogo, [vem em minha mente as imagens de obras musicais](<https://en.wikipedia.org/wiki/File:%C3%98neheart_-_Snowfall.jpg>) do artista musical [*Øneheart*](<https://en.wikipedia.org/wiki/%C3%98neheart>). *Talvez seja uma inspiração mais subpsicológica também.*
+
+## Como Jogar
+
+Primeiramente, o jogo não tem gráfico e nem áudio como [listado aqui](#introdução).  
+**Então, não entre no jogo esperando algo muito bonitinho. Só há texto.**
+
+Você controla o jogo por meio da exploração do ambiente.  
+O objetivo é sentir as imagens que o jogo pode te proporcionar.
+
+Começando pelos requisitos mínimos:
+
+- Um pouco de cérebro;
+- Computador/celular;
+- Emulador de terminal;
+- Python >3.12.
+
+Para executar o jogo, só basta fazer os seguintes procedimentos:
+
+### Windows
+
+```
+git clone https://github.com/greenboots1824/distantdream.git
+cd distantdream
+py .\distantdream.py
+```
+
+### Linux/MacOS
+```
+git clone https://github.com/greenboots1824/distantdream.git
+cd distantdream
+./distantdream.py
+```
+
+#### Nota
+
+- O jogo é desenvolvido para funcionar da forma mais portátil e universal possível. Logo, é previsto para funcionar em plataformas como o *Termux* e *WSL*, por exemplo, da mesma forma que funcionaria nos ambientes que eles buscam simular e/ou emular e trazer. Nestes dois casos, o Unix-like.
+
+## Como Funciona
 
 O jogo toca justamente no desconforto do jogador, isto é, jogos sem materiais como músicas, sons e quaisquer outros meios que componham o ambiente do jogo tendem a causar mais desconforto por si devido ao costume de outros meios para compor um contexto/cenário e o cérebro humano não estar acostumado com o silêncio absoluto (nem todos vão sentir este desconforto).
 
 Além disso, é possível que o jogo possa soar desconfortável para alguns públicos, porém, um desconforto leve é comum devido a experiência incomum e a expectativa. **Isto é para ser esperado**.
 
-#### Considerações Psicológicas
+### Considerações Psicológicas
 
 Portanto, se ao jogar o jogo, você sentir  **quaisquer sintomas psicológicos de forma intensas e fora do esperado como ansiedade intensa, estresse, angústia e/ou desconforto intenso, favor fechar o jogo imediatamente e evitar a visualização o material**.
 
 *Pessoas com [AFANTASIA](<https://en.wikipedia.org/wiki/Aphantasia>) muito provavelmente sofrerão muita dificuldade para sentir os efeitos desejados psicológicos aqui. Me desculpem! :​(*
 
-## História do Jogo
+*Pessoas com [HIPERFANTASIA](<https://en.wikipedia.org/wiki/Hyperphantasia>) muito provavelmente sentirão nenhuma ou pouca dificuldade para sentir o jogo. Afinal, é muito mais fácil imaginar o que pode acontecer tendo mais facilidade para imaginar cenários psicológicos de forma complexa.*
 
-Escrevendo ainda...
+## Colaboração
 
-## Inspiração
+Se caso perceber algum bug, por favor, reportar usando as issues ou fazendo pull requests.
 
-Escrevendo ainda...
+Deixe sugestões no email abaixo:  
+whoismeifthenameisocult@proton.me
 
-## Como Jogar?
+Sua colaboração é importante para que o projeto funcione da forma adequada e satisfatória. :heart:

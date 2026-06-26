@@ -4,5 +4,10 @@
 	"pause_dialog": 0.300,
 
 	"pause_enter": false,
-	"long_pause": 0.350
+	"long_pause": 0.350,
+
+	"limit_lines": 4,
+
+	"skip_warning": false,
+	"skip_banner": false
 }
