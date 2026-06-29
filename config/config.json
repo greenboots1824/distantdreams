@@ -1,0 +1,12 @@
+{
+    "interval_min": 0.05,
+    "interval_max": 0.2,
+    "pause_dialog": 0.3,
+    "pause_enter": true,
+    "long_pause": 0.35,
+    "limit_lines": 4,
+    "skip_warning": true,
+    "skip_banner": true,
+    "clear_dialog": false,
+    "first_time": false
+}
