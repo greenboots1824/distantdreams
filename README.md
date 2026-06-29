@@ -1,27 +1,29 @@
 # Distant Dreams
 
+Status: **Em desenvolvimento** :warning:  
+Desenvolvimento: **Alpha**
+
 - Autor: GreenBoots  
 - Licença: GNU GPLv3  
 - Copyright (C) 2026 GreenBoots
 
 ## Documentação
 
-- [Hacking](docs/HACKING.md)
-- [Formatação JSON](docs/JSON.md)
+- [Hacking](docs/HACKING.md)  
+Explica como o código funciona e como modificar.
 
-## Resumo
-
-Status: **Em desenvolvimento** :warning:
-
-(Escrevendo ainda...)
+- [Formatação JSON](docs/JSON.md)  
+Esta documentação explica como funciona o JSON deste projeto funciona.
 
 ## Introdução
 
-`distantdream` é um jogo [CLI](<https://en.wikipedia.org/wiki/Command-line_interface>) de experiência psicológica escrito para ser open-source, *hackável* (modificável), portátil e multiplataforma.
+### Resumo
+
+Distant Dreams é um jogo [CLI](<https://en.wikipedia.org/wiki/Command-line_interface>) de experiência psicológica escrito para ser open-source, *hackável* (modificável), portátil e multiplataforma.
 
 O jogo tem uma proposta diferente à ser entregue. Isto é, você precisa usar a própria imaginação para compreender e praticamente *sentir* o jogo ao invés de consumir o conteúdo através de quaisquer outros meios como o visual e auditivo em si.
 
-Por isto, intencionalmente, o jogo não possui gráficos (2D, 3D), músicas, sons e nem nada; somente texto, tal como um livro.  
+Por isto, intencionalmente, o jogo não possui gráficos (2D, 3D), músicas, sons e nem nada; somente texto, assim como um livro.
 
 ## Inspiração
 
@@ -30,15 +32,16 @@ O jogo te daria um cenário, porém você usa da sua própria imaginação para 
 
 Para isto, memórias fragmentadas, sentimentos atuais, uso de imagens simbólicas oníricas serão usados do leitor/jogador para criar e recriar sensações.
 
-Como estava também sem muitos projetos diferenciados e muitas idéias anteriores, então, quis fazer um jogo nesta tem
+Como estava também sem muitos projetos diferenciados e muitas idéias anteriores, então, quis fazer um jogo nesta temática.
 
-### Curiosidades:
+### Curiosidades
+
 - O jogo foi baseado em **Doki Doki Literature Club** e **Yume Nikki**. Falando respectivamente, pois se deve do jogo ser em visual novel, com uma história toda contada em caixas de diálogo; o jogo também apela para um lado mais onírico, como de fato, um sonho.
 - Ao criar o jogo, toda vez que penso sobre o jogo, [vem em minha mente as imagens de obras musicais](<https://en.wikipedia.org/wiki/File:%C3%98neheart_-_Snowfall.jpg>) do artista musical [*Øneheart*](<https://en.wikipedia.org/wiki/%C3%98neheart>). *Talvez seja uma inspiração mais subpsicológica também.*
 
 ## Como Jogar
 
-Primeiramente, o jogo não tem gráfico e nem áudio como [listado aqui](#introdução).  
+Primeiramente, o jogo não tem gráfico e nem áudio como [listado aqui](#resumo).  
 **Então, não entre no jogo esperando algo muito bonitinho. Só há texto.**
 
 Você controla o jogo por meio da exploração do ambiente.  
@@ -74,9 +77,14 @@ cd distantdream
 
 ## Como Funciona
 
-O jogo toca justamente no desconforto do jogador, isto é, jogos sem materiais como músicas, sons e quaisquer outros meios que componham o ambiente do jogo tendem a causar mais desconforto por si devido ao costume de outros meios para compor um contexto/cenário e o cérebro humano não estar acostumado com o silêncio absoluto (nem todos vão sentir este desconforto).
+O jogo se usufrui das condições humanas de forma ética para causar; estimular sensações e sentimentos diferentes. Você usa da sua própria imaginação e sente na pele o que o jogo tem à te mostrar.  
+*Ele só fornece a história. Você só **interpreta**.*
 
-Além disso, é possível que o jogo possa soar desconfortável para alguns públicos, porém, um desconforto leve é comum devido a experiência incomum e a expectativa. **Isto é para ser esperado**.
+Em conjunto, o jogo trabalha com o desconforto do jogador. Para isto, sem materiais como músicas, sons e quaisquer outros meios que componham o ambiente do jogo.  
+O que tendem a causar mais desconforto por si devido à expectativa de outros meios para compor um contexto/cenário e o cérebro humano não ser feito para conviver em muito tempo no silêncio absoluto (nem todos vão sentir este desconforto).
+
+Portanto, é possível que o jogo possa soar desconfortável para alguns públicos.  
+Um desconforto leve é comum devido a experiência incomum e a expectativa. **Isto é para ser esperado**.
 
 ### Considerações Psicológicas
 

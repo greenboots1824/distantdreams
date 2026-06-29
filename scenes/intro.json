@@ -37,7 +37,7 @@
 			},
 			{
 				"person": "Narrador",
-				"text": "\nVocê deseja levantar?",
+				"text": "Você deseja levantar?",
 				"question": true,
 				"options": [
 					{
@@ -67,7 +67,6 @@
 				"person": "WILLIAM",
 				"text": "A demonstração acaba AQUI. Agradeço por testar e talvez ter gostado!"
 			}
-
 		]
 	}
 }
