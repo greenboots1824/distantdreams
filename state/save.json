@@ -1,1 +1,7 @@
-{}
+{
+    "part": "stay_on_bed",
+    "actualfile": "scenes/intro.json",
+    "nextpart": null,
+    "nextfile": null,
+    "index": 2
+}

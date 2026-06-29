@@ -82,13 +82,17 @@ def loadfile(filename):
         with open(filename, "r", encoding="utf-8") as file:
             return json.load(file)
 
+    except FileNotFoundError:
+        return None
+
     except Exception as error:
         print("An error occured while access a file:", error)
         sys.exit(1)
 
-def savefile(filename, content):
+
+def savefile(filepath, content):
     try:
-        with open(filename, "w", encoding="utf-8") as file:
+        with open(filepath, "w", encoding="utf-8") as file:
             json.dump(content, file, ensure_ascii=False, indent=4)
 
     except Exception as error:

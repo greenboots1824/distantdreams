@@ -4,10 +4,10 @@
 # Autor: GreenBoots
 # Licença: GNU GPLv3
 
-from modules import engine, warning, utils, banner
 import time
 
-config = utils.loadfile("config/config.json")
+from modules import engine, warning, utils, banner
+from modules.vars import config
 
 def main():
     if config["skip_banner"] is False or config["first_time"] is True:
@@ -43,7 +43,7 @@ def main():
         config["first_time"] = False
         utils.savefile("config/config.json", config)
 
-    engine.main("scenes/intro.json")
+    engine.main()
 
 if __name__ == "__main__":
     main()
