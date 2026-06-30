@@ -1,7 +1,7 @@
 # Distant Dreams
 
 Status: **Em desenvolvimento** :warning:  
-Desenvolvimento: **Alpha** (estado funcional, porém não completo)
+Desenvolvimento: **Beta** (estado funcional, porém sem história completa)
 
 - Autor: GreenBoots  
 - Licença: GNU GPLv3  
