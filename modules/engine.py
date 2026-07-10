@@ -2,137 +2,125 @@ import os
 import sys
 import time
 
-from . import utils
-from .vars import config
-from .vars import systemclear
-from .vars import status
-from .vars import savefile
-from .vars import startfile
-from .vars import savepath
-
-reset = False
+from . import utils as util
+from . import vars as var
 
 def main():
-    global savefile
-    global savepath
-    global startfile
-
-    global status
-    global reset
+    reset = False
 
     try:
         # Verificando save
-        if config["load_savefile"] is True and savefile:
-            status = savefile
+        if var.config["load_savefile"] is True and var.savefile is not None:
+            var.status = var.savefile
+
         else:
             # Começo estático
-            status["nextfile"] = startfile
+            var.status["nextfile"] = var.startfile
 
         # Lógica principal do jogo
         while True:
             # Se houver um arquivo para carregar,
             # apenas faça!
-            if status["actualfile"] and reset is False:
-                game = utils.loadfile(status["actualfile"]) # Jogo na memória
+            if var.status["actualfile"] and reset is False:
+                game = util.loadfile(var.status["actualfile"]) # Jogo na memória
 
-            elif status["nextfile"]:
-                game = utils.loadfile(status["nextfile"])
-
-            #print(game)
-            #print(len(game[status["part"]]["dialogs"]))
-            #input()
+            elif var.status["nextfile"]:
+                game = util.loadfile(var.status["nextfile"])
 
             # Já viu começar de outro lugar?
             # Claro que o index pra "folhear" a história
             # é justo do ponto zero!
             if reset is True:
-                status["index"] = 0
-                status["nextpart"] = None
-                status["nextfile"] = None
+                var.status["index"] = 0
+                var.status["nextpart"] = None
+                var.status["nextfile"] = None
 
-            if config["clear_dialog"] is True:
-                os.system(systemclear)
+            if var.config["clear_dialog"] is True:
+                os.system(var.systemclear)
 
-            while status["index"] < len(game[status["part"]]["dialogs"]):
+            while var.status["index"] < len(game[var.status["part"]]["dialogs"]):
                 # Definir essa coisa pra não zoar
                 # a minha vida, minha existência :D
-                dialogs = game[status["part"]]["dialogs"]
-                section = dialogs[status["index"]]
+                dialogs = game[var.status["part"]]["dialogs"]
+                section = dialogs[var.status["index"]]
                 dialog = section["text"]
 
                 # Próxima parte para continuar
                 nextpart = section.get("nextpart")
 
                 # Checagem de personagens
-                if status["index"] - 1 < 0:
+                if var.status["index"] - 1 < 0:
                     oldperson = None
                 else:
-                    oldperson = dialogs[status["index"] - 1].get("person", None)
+                    oldperson = dialogs[var.status["index"] - 1].get("person", None)
 
                 # Personagem atual
                 newperson = section.get("person", None)
-                 
+
                 # Mecanismo de personagem
-                if status["index"] == 0:
+                if var.status["index"] == 0:
                     print(f"[{newperson}]")
 
-                elif reset is False and status["index"] > 0:
+                elif reset is False and var.status["index"] > 0:
                     print(f"[{newperson}]")
 
                 elif oldperson and oldperson != newperson:
                     # Cheque se o personagem anterior é diferente
                     # ou igual ao atual. Se verdadeiro para diferente,
                     # logo, exibir personagem diferente.
+                    #
                     # Foi a parte mais legal do código, poxa :,)
                     print(f"\n[{newperson}]")
 
                 # Efeito de digitação 
-                utils.typingeffect(config, dialog) 
-
-                # TEM COMO EU OTIMIZAR ESTA PARTE
-                status["nextpart"] = section.get("nextpart", None)
-                status["nextfile"] = section.get("nextfile", None)
+                util.typingeffect(dialog)
 
                 # Se caso for uma pergunta
-                if section.get("question"):
-                    status["nextpart"], status["nextfile"] = utils.printchoices(section)
+                if section.get("question") is True:
+                    var.status["nextpart"], var.status["nextfile"] = util.printchoices(section)
+
+                else:
+                    var.status["nextpart"] = section.get("nextpart", None)
+                    var.status["nextfile"] = section.get("nextfile", None)
 
                 # Próximo texto....
-                status["index"] += 1 
+                var.status["index"] += 1 
                 reset = True
 
             # Deseja que o jogo pause e continue com enter?
             # Não parece muito legal as vezes.
             # Só configurar e arrastar pra cima, pô!
-            if config["pause_enter"] and not section.get("question"):
+            if var.config["pause_enter"] and not section.get("question"):
                 input("\nPressione <ENTER> para continuar...")
 
             # A história apenas continua...
-            if status["nextpart"]:
+            if var.status["nextpart"]:
                 # Afinal, a história não acaba, poxa.
                 # Deixa rolar! Deixa ir pra outra parte!
-                time.sleep(config["long_pause"])
-                print()
+                time.sleep(var.config["long_pause"])
+                print() # Nova linha
 
-                status["part"] = status["nextpart"]
+                var.status["part"] = var.status["nextpart"]
 
             # O fim.
             # Na verdade, vou fazer disto aqui um loop futuro.
             # Ainda vou projetar esta parte
-            if not status["nextfile"] and not status["nextpart"]:
+            if not var.status["nextfile"] and not var.status["nextpart"]:
                 break
 
     except KeyboardInterrupt:
-        os.system(systemclear)
+        os.system(var.systemclear)
         print("Jogo Fechado.")
 
         # Sistema de salvamento aqui
-        if config["save"] is True:
-            if status["index"] == len(game[status["part"]]["dialogs"]):
-                status["index"] -= 1
+        if var.config["save"] is True:
+            # Isto foi escrito para não causar problemas
+            # de salvamento
+            if var.status["index"] == len(game[var.status["part"]]["dialogs"]):
+                var.status["index"] -= 1
 
-            elif status["index"] < 0:
-                status["index"] = 0
+            elif var.status["index"] < 0:
+                var.status["index"] = 0
 
-            utils.savefile(savepath, status)
+            utils.savefile(var.savepath, var.status)
             print("O jogo foi salvo!")

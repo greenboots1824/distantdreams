@@ -3,6 +3,10 @@ import json
 import sys
 import time
 import random
+import shutil
+from pathlib import Path
+
+from . import vars as var
 
 def printchoices(section):
     options = section["options"]
@@ -36,7 +40,7 @@ def printchoices(section):
 
     return nextpart, nextfile
 
-def typingeffect(config, text, Wait=-1.0, NewLine=True):
+def typingeffect(text, Wait=-1.0, NewLine=True):
     if not isinstance(NewLine, bool):
         raise TypeError("NewLine is not a boolean!")
 
@@ -52,8 +56,8 @@ def typingeffect(config, text, Wait=-1.0, NewLine=True):
         # -1 para desativado
         if Wait == -1.0:
             interval_gen = random.uniform(
-                config["interval_min"],
-                config["interval_max"]
+                var.config["interval_min"],
+                var.config["interval_max"]
                 )
 
             time.sleep(interval_gen)
@@ -78,6 +82,9 @@ def detectclear():
     return system_clear
 
 def loadfile(filename):
+    if not filename:
+        raise ValueError("Not null value allowed")
+
     try:
         with open(filename, "r", encoding="utf-8") as file:
             return json.load(file)
@@ -98,3 +105,28 @@ def savefile(filepath, content):
     except Exception as error:
         print("An error occured while writing a file:", error)
         sys.exit(1)
+
+def resetconfig():
+    # Autocarregar arquivo de configuração
+    # padrão para uso
+    testconfig = Path(var.configpath)
+
+    if not testconfig.is_file():
+        # Se config.json não existir
+        # Criar uma nova baseada em defaultconfig.json
+        defaultconfig = loadfile("config/defaultconfig.json")
+
+        savefile(var.configpath, defaultconfig)
+
+    elif testconfig.is_dir():
+        while True:
+            print("Foi detectado que há uma pasta no lugar de config.json")
+            answer = input("Deseja deletar? Y/N ")
+
+            if answer.upper() == "Y" or answer.upper() == "S":
+                shutil.rmtree("config/config.json")
+                break
+
+            elif answer.upper() == "N":
+                print("OK! Apague manualmente para o jogo voltar a funcionar!")
+                sys.exit(1)

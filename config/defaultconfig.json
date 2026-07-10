@@ -8,7 +8,7 @@
     "skip_banner": false,
     "first_time": true,
     "clear_dialog": false,
-	"savename": "save",
+    "savename": "save",
     "save": false,
     "load_savefile": false
 }

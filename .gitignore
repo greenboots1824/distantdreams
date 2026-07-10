@@ -1,7 +1,10 @@
 # Nah. É só para poluir o usuário final.
 # Nada importante.
 modules/__pycache__
-tests
 
 # Lista de ideias
 notas.txt
+
+# Você não precisa do arquivo de configurações
+# apenas crie o seu!
+config/config.json

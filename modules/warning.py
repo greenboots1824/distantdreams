@@ -1,5 +1,5 @@
-from . import utils
-from .vars import config
+from . import utils as util
+from . import vars as var
 
 warning = """
 ATENÇÃO!
@@ -12,7 +12,7 @@ Pessoas com traumas recentes, depressão, ansiedade devem evitar a visualizaçã
 """
 
 def main(): 
-    utils.typingeffect(config, warning, Wait=0.025)
+    util.typingeffect(warning, Wait=0.025)
 
     input("Pressione <ENTER> para continuar...")
     print()

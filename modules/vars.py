@@ -1,16 +1,19 @@
-from .utils import loadfile
-from .utils import detectclear
+from . import utils as util
 
 # Deixando variáveis estáticas aqui
 startfile = "scenes/intro.json"
 
-systemclear = detectclear()
+systemclear = util.detectclear()
 
 configpath = "config/config.json"
-config = loadfile(configpath)
+
+# Checando as configurações
+util.resetconfig()
+
+config = util.loadfile(configpath)
 
 savepath = f"state/{config["savename"]}.json"
-savefile = loadfile(savepath)
+savefile = util.loadfile(savepath)
 
 # Estado do jogo
 status = {

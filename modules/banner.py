@@ -1,4 +1,4 @@
-banner_val = r""" _____  _     _              _     _____
+banner_var = r""" _____  _     _              _     _____
 |  __ \(_)   | |            | |   |  __ \
 | |  | |_ ___| |_ __ _ _ __ | |_  | |  | |_ __ ___  __ _ _ __ ___  ___
 | |  | | / __| __/ _` | '_ \| __| | |  | | '__/ _ \/ _` | '_ ` _ \/ __|
@@ -7,10 +7,11 @@ banner_val = r""" _____  _     _              _     _____
 """
 
 def main():
-    print(banner_val)
+    print(banner_var)
 
     print("Copyright (C) 2026, GreenBoots")
-    print("LICENSE: GNU General Public License v3.0\n")
+    print("LICENSE: GNU General Public License v3.0")
+    print()
 
     print("Github: https://github.com/greenboots1824/")
     print("Email: whoismeifthenameisocult@proton.me")
