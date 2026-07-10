@@ -9,11 +9,14 @@ Desenvolvimento: **Alpha** (estado funcional, porém sem história completa)
 
 ## Documentação
 
-- [Hacking](docs/HACKING.md)  
-Explica como o código funciona e como modificar.
+- [Guia de configurações](docs/CONFIG.md)  
+    Guia para a compreensão e realizar a configuração e cada opção do jogo.
 
-- [Formatação JSON](docs/JSON.md)  
-Esta documentação explica como funciona o JSON deste projeto funciona.
+- [Guia de Hacking](docs/HACKING.md)  
+    Guia para a compreensão e realizar modificações sobre hacking do projeto.
+
+- [Guia de JSON](docs/JSON.md)  
+    Guia para a compreensão e realizar as configurações em relação ao JSON do jogo.
 
 ## Introdução
 

@@ -1,9 +1,15 @@
-# Distant Dream
+# Distant Dreams
 
-## Veja Também
+## Documentações
 
-- [HACKING](HACKING.md)
-- [README](../README.md)
+- [Guia de configurações](CONFIG.md)  
+    Guia para a compreensão e realizar a configuração e cada opção do jogo.
+
+- [Guia de Hacking](JSON.md)  
+    Guia para a compreensão e realizar modificações sobre hacking do projeto.
+
+- [README](../README.md)  
+    Retorna para o início do projeto e consequentemente, toda a descrição do jogo.
 
 ## Padrão JSON
 
@@ -144,7 +150,7 @@ Continuando no mesmo arquivo acima, temos a continuação a seguir:
 
 ### Funcionamento Python
 
-Mas antes de prosseguirmos, Primeiramente, é muito mais interessante falar como `engine.py` com a função interna `main(FILE)` processa estes arquivos.
+Mas antes de prosseguirmos, primeiramente, é muito mais interessante comentar à respeito sobre o funcionamento interno de `engine.py` com a função interna `main()` processa estes arquivos.
 
 - Observe acima que a engine recebe um parâmetro de tipo string com o caminho **relativo** do arquivo JSON. Isto é, por conta de `distantdream.py` se localizar no `rootdir` do programa, logo, os caminhos são simplesmente fornecidos para `FILE` como `scenes/EXAMPLE_FILE.json`.
 
@@ -159,30 +165,51 @@ def loadfile(filename):
 ```
 
 ``` python
+# Arquivo: vars.py
+
+startfile = "scenes/intro.json"
+
+configpath = "config/config.json"
+config = loadfile(configpath)
+
+status = {
+    "part" : "start",
+    "actualfile": None,
+    "nextpart": None,
+    "nextfile": None,
+    "print_name": None,
+    "index": 0
+}
+```
+
+``` python
 # Arquivo: engine.py 
 
+from . import utils as util
+from . import vars as var
+
 # Carrega o jogo na memória
-game = utils.loadfile()
+game = util.loadfile(var.startfile)
 
-part = "start"
-nextpart = None
-nextfile = None
+var.part = "start"
+var.nextpart = None
+var.nextfile = None
 
-index = 0
+var.index = 0
 
 # Loop main
 while True:
-    dialogs = game[part]["dialogs"]
-    section = dialogs[index]
+    dialogs = game[var.part]["dialogs"]
+    section = dialogs[var.index]
     dialog = section["text"]
     
     # ...
 ```
 
-Cada variável desta aqui serve para armazenar um estado do jogo. Todas estas são mutáveis 
+Cada variável desta aqui serve para armazenar um estado do jogo. Todas estas são mutáveis e pertencentes ao arquivo de armazenamento de variáveis `vars.py`:
 
-- `part` --- Armazena a parte dentro do arquivo onde se encontra o código;
-  - A parte inicial e padrão do código é normalmente `start`. Esta parte é estática. Você pode alterar, mas saiba que isto é um padrão;
 - `game` --- Variável pelo qual carrega o conteúdo do jogo na memória;
 - `dialogs` --- Carrega a `dialogs` do arquivo escolhido;
-- `section` --- Carrega regiões de dados nas arrays de `dialogs` de JSON.
+- `section` --- Carrega regiões de dados nas arrays de `dialogs` de JSON;
+- `part` --- Armazena a parte dentro do arquivo onde se encontra o código;
+  - A parte inicial e padrão do código é normalmente `start`. Esta parte é estática. Você pode alterar, mas saiba que isto é um padrão em meu código original.
