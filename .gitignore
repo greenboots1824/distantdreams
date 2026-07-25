@@ -2,8 +2,8 @@
 # Nada importante.
 modules/__pycache__
 
-# Lista de ideias
-notas.txt
+# Você não precisa do meu saving :P
+state/save.json
 
 # Você não precisa do arquivo de configurações
 # apenas crie o seu!
