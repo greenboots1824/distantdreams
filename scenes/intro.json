@@ -42,7 +42,7 @@
 				"options": [
 					{
 						"option": "Sim",
-						"nextfile": "scenes/bedroom.json"
+						"nextfile": "bedroom"
 					},
 					{
 						"option": "Não",

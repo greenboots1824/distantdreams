@@ -13,7 +13,7 @@
 
 ## Padrão JSON
 
-Aqui é onde toda a magia do projeto está. Como o projeto é movido por estes arquivos em JSON, a formatação deles é relativamente simples e você pode entender mais olhando o [`engine.py`](../modules/engine.py). Portanto, a seguir, farei questão de explicar como funciona alguns parâmetros.
+Aqui é onde toda a magia do projeto está. Como o projeto é movido por estes arquivos em JSON, a formatação deles é relativamente simples e você pode entender mais olhando o `engine.py`. Portanto, a seguir, farei questão de explicar como funciona alguns parâmetros.
 
 Vamos supor que estamos falando de `intro.json` no exemplo abaixo:
 
@@ -43,10 +43,10 @@ Vamos supor que estamos falando de `intro.json` no exemplo abaixo:
 },
 ```
 
-Ao invés da cena só continuar, ele aponta para outra cena usando `"nextpart"` dentro da array `game["start"]["dialogs"][3]` que fica como:
+Ao invés da cena só continuar, ele aponta para outra cena usando `"nextpart"` dentro da array `game["start"]["dialogs"][4]` que fica como:
 
 ``` python
-nextpart = game["start"]["dialogs"][3]["nextpart"]
+nextpart = game["start"]["dialogs"][4]["nextpart"]
 
 print(nextpart)
 # "proxima_parte"
@@ -56,10 +56,10 @@ O design de index foi usado justamente pensado para ser lido como uma linha segu
 
 ```
 "start":
-   | "dialogs": [0][1][2][3]
-    \       \             ^
-     \        \           |
-       \        \         |
+   | "dialogs": [0][1][2][3][4]
+    \       \                ^
+     \        \              |
+       \        \            |
 game["start"]["dialogs"][index]
 ```
 
@@ -82,7 +82,8 @@ Agora, estes abaixo têm funções específicas e "especiais":
 - `nextpart` --- É como um "ponteiro" para continuar a história. Se caso for `None` e `nextfile` também, o programa vai simplesmente parar. O ponteiro funciona somente para parte LOCAIS do arquivo;
   - Como exemplo, dentro do **mesmo arquivo** haver `parte1` e `parte2` e você fazer transição entre duas partes `parte1 -> parte2`;
 - `nextfile` --- É quase o mesmo conceito do `nextpart`, porém ele aponta de fato para um arquivo. Entretanto, o arquivo específicado é **relativo** ao `distantdream.py` também.  
-Logo, você usa um caminho como `scenes/EXEMPLO.json`.
+
+Logo, você usa o nome  como `EXEMPLO`.
 
 ---
 
@@ -106,12 +107,13 @@ Continuando no mesmo arquivo acima, temos a continuação a seguir:
             },
             {
                 "person": "Pessoa 4",
-                "text": "\nVocê deseja fazer isto?",
+                "text": "Você deseja fazer isto?",
                 "question": true,
+                "waittime": 0.030,
                 "options": [
                     {
                         "option": "Sim",
-                        "nextfile": "scenes/example.json"
+                        "nextfile": "example"
                     },
                     {
                         "option": "Não",
@@ -144,33 +146,15 @@ Continuando no mesmo arquivo acima, temos a continuação a seguir:
 
 - `question` --- Se caso for `true` em JSON, logo a `engine.py` altera o funcionamento normal e verifica a array `options`. Onde você dentro coloca o `option` para informar o texto da opção e em seguida usa uma continuação como o `nextfile` ou `nextpart`;
   - Observe também que você não precisa toda hora definir `question` como `false` só para informar à engine que não é uma pergunta;
-- `options` --- É a array com as escolhas de acordo com a pergunta.
+- `options` --- É a array com as escolhas de acordo com a pergunta;
+- `waittime` --- É a variável que define um tempo constante para digitar.
 
 ---
 
 ### Funcionamento Python
 
-Mas antes de prosseguirmos, primeiramente, é muito mais interessante comentar à respeito sobre o funcionamento interno de `engine.py` com a função interna `main()` processa estes arquivos.
-
-- Observe acima que a engine recebe um parâmetro de tipo string com o caminho **relativo** do arquivo JSON. Isto é, por conta de `distantdream.py` se localizar no `rootdir` do programa, logo, os caminhos são simplesmente fornecidos para `FILE` como `scenes/EXAMPLE_FILE.json`.
-
-A engine usa a seguinte estrutura de variável para realizar a leitura:
-
 ``` python
-# Arquivo: utils.py
-
-def loadfile(filename):
-    with open(filename, "r", encoding="utf-8") as file:
-        return json.load(file)
-```
-
-``` python
-# Arquivo: vars.py
-
-startfile = "scenes/intro.json"
-
-configpath = "config/config.json"
-config = loadfile(configpath)
+# Arquivo: common.py
 
 status = {
     "part" : "start",
@@ -183,30 +167,12 @@ status = {
 ```
 
 ``` python
-# Arquivo: engine.py 
-
-from . import utils as util
-from . import vars as var
-
-# Carrega o jogo na memória
-game = util.loadfile(var.startfile)
-
-var.part = "start"
-var.nextpart = None
-var.nextfile = None
-
-var.index = 0
-
-# Loop main
-while True:
-    dialogs = game[var.part]["dialogs"]
-    section = dialogs[var.index]
-    dialog = section["text"]
-    
-    # ...
+dialogs = game[common.status[part]]["dialogs"]
+section = dialogs[common.status[index]]
+dialog = section["text"]
 ```
 
-Cada variável desta aqui serve para armazenar um estado do jogo. Todas estas são mutáveis e pertencentes ao arquivo de armazenamento de variáveis `vars.py`:
+Cada variável desta aqui serve para armazenar e acessar um estado do jogo. Todas estas são mutáveis e pertencentes ao arquivo de armazenamento de variáveis `common.py`:
 
 - `game` --- Variável pelo qual carrega o conteúdo do jogo na memória;
 - `dialogs` --- Carrega a `dialogs` do arquivo escolhido;

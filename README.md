@@ -104,6 +104,6 @@ cd distantdream
 Se caso perceber algum bug, por favor, reportar usando as issues ou fazendo pull requests.
 
 Deixe sugestões no email abaixo:  
-whoismeifthenameisocult@proton.me
+whoismeifthemynameisocult@proton.me
 
 Sua colaboração é importante para que o projeto funcione da forma adequada e satisfatória. :heart:
